@@ -16,7 +16,7 @@ git clone https://gitlab.com/DrunkenAlcoholic/nimdowstatus.git ~/.config/nimdow/
 ### Compile
 ```bash
 cd ~/.config/nimdow/nimdowstatus
-nimble build
+nimble build -d:ssl
 ```
 Or for some performance improvements you can enable some compiler flags, -d:ssl flag is need for the weather, using nimble with the release argument will include -d:ssl
 
