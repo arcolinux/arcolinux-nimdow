@@ -3,7 +3,9 @@ A Simple Status For Nimdow Window Manager
 https://github.com/avahe-kellenberger/nimdow
 
 ## Screenshot
-![alt text](images/screenshot.png "NimdowStatus")
+![alt text](images/screenshot.png "NimdowStatus - Gruvbox")
+
+![alt text](images/screenshot2.png "NimdowStatus - Dracula")
 
 ## Installation
 install font awesome for the icons. most distrobutions have this package in their repo.
@@ -16,7 +18,7 @@ git clone https://gitlab.com/DrunkenAlcoholic/nimdowstatus.git ~/.config/nimdow/
 ### Compile
 ```bash
 cd ~/.config/nimdow/nimdowstatus
-nimble build
+nimble build -d:ssl
 ```
 Or for some performance improvements you can enable some compiler flags, -d:ssl flag is need for the weather, using nimble with the release argument will include -d:ssl
 
