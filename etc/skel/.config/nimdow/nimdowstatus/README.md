@@ -7,6 +7,8 @@ https://github.com/avahe-kellenberger/nimdow
 
 ![alt text](images/screenshot2.png "NimdowStatus - Dracula")
 
+![alt text](images/screenshot4.png "NimdowStatus - Dracula")
+
 ## Installation
 install font awesome for the icons. most distrobutions have this package in their repo.
 
