@@ -43,15 +43,7 @@
 exec = [
   "xsetroot -cursor_name left_ptr",
   "~/.config/nimdow/autostart.sh",
-  "~/.config/nimdow/nimdowstatus/NimdowStatus"
-  "~/.config/nimdow/start-picom.sh",
-  "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
-  "nitrogen --restore",
-  "nm-applet",
-  "volumeicon",
-  "blueberry-tray",
-  #"firefox",
-  #"st",
+  "~/.config/nimdow/nimdowstatus/NimdowStatus",
 ]
 
 [settings]
