@@ -44,33 +44,46 @@ exec = [
   "xsetroot -cursor_name left_ptr",
   "~/.config/nimdow/autostart.sh",
   "~/.config/nimdow/nimdowstatus/NimdowStatus"
-  #"~/.config/nimdow/start-picom.sh",
-  #"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
-  #"nitrogen --restore",
-  #"nm-applet",
-  #"volumeicon",
-  #"blueberry-tray",
+  "~/.config/nimdow/start-picom.sh",
+  "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
+  "nitrogen --restore",
+  "nm-applet",
+  "volumeicon",
+  "blueberry-tray",
   #"firefox",
   #"st",
 ]
 
 [settings]
   # Window settings - gruvboxish type theme
+  #borderWidth = 1
+  #borderColorUnfocused = "#282a36"
+  #borderColorFocused = "#8ec07c"
+  #borderColorUrgent = "#cc241d"
+  # Bar settings
+  #barHeight = 28
+  #windowTitlePosition = "center"
+  #barBackgroundColor = "#918273" #"#282a36"
+  #barForegroundColor = "#313338" #"#f8f8f2"
+  #barSelectionColor = "ebdbb2"#"#f9bc2f" #"#50fa7b"
+  #barUrgentColor = "#cc241d"
+  
+  # Window settings - Dracula type theme
   borderWidth = 1
-  borderColorUnfocused = "#282a36"
-  borderColorFocused = "#8ec07c"
-  borderColorUrgent = "#cc241d"
+  borderColorUnfocused = "#6272a4"
+  borderColorFocused = "#ff79c6"
+  borderColorUrgent = "#ff5555"
   # Bar settings
   barHeight = 28
   windowTitlePosition = "center"
-  barBackgroundColor = "#918273" #"#282a36"
-  barForegroundColor = "#313338" #"#f8f8f2"
-  barSelectionColor = "ebdbb2"#"#f9bc2f" #"#50fa7b"
-  barUrgentColor = "#cc241d"
+  barBackgroundColor = "#282a36"
+  barForegroundColor = "#44475a"
+  barSelectionColor = "#f1fa8c"
+  barUrgentColor = "#ff5555"
   barFonts = [
-    "DejaVu Sans:style=Bold:size=12:antialias=true"
-    "FontAwesome:size=14:antialias=true"
-    "JetBrainsMono Nerd Font:size=20:antialias=true",
+    "Inconsolata:style=Bold:size=14:antialias=true",
+    "FontAwesome:size=14:antialias=true",
+    "JetBrainsMono Nerd Font Mono:size=20:antialias=true",
   ]
   # Layout settings
   gapSize = 12
