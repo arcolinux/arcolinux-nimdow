@@ -10,7 +10,7 @@ const
   ## not used yet, more themes to come, see below theme section
   #THEME = "gruvbox_arrows"
   ## select city for weather, uses wttr.in
-  CITY = "Perth" #
+  CITY = "" #
   ## update weather in minutes
   UPDATE_WEATHER = 10
   ## typically its either BAT0 or BAT1, not used yet, see getBatStatus.nim to change
@@ -51,9 +51,8 @@ include functions/getMemory
 include functions/getWeather
 
 
-
 # Function to set the string
-proc setStatus(sStatus: string) = 
+proc setStatus(sStatus: string) =
   discard execShellCmd("xsetroot -name " & "\"" & sStatus & "\"")
 
 # Main loop
