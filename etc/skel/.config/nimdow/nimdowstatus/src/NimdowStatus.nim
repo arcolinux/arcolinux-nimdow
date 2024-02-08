@@ -52,14 +52,14 @@ include functions/getWeather
 
 
 # Function to set the string
-proc setStatus(sStatus: string) = 
+proc setStatus(sStatus: string) =
   discard execShellCmd("xsetroot -name " & "\"" & sStatus & "\"")
 
 # Main loop
 proc main() =
   while true:
     # create the string using themed arrows and functions
-    let sStatusString = fmt"{ARROW_CYAN}{ARROW_ORANGE}{getWeather()}{ARROW_PINK}{ARROW_PURPLE}{getMemory()}{ARROW_RED}{getDateTime()}{RESET}"
+    let sStatusString = fmt"{ARROW_CYAN}{ARROW_ORANGE}{getWeather()}{ARROW_PINK}{getBatStatus()}{ARROW_PURPLE}{getMemory()}{ARROW_RED}{getDateTime()}{RESET}"
     #let sStatusString = fmt"{CIRCLE_GREEN_L}{getWeather()}{CIRCLE_GREEN_R}{CIRCLE_ORANGE_L}{getBatStatus()}{CIRCLE_ORANGE_R}{CIRCLE_BLUE_L}{getMemory()}{CIRCLE_BLUE_R}{CIRCLE_RED_L}{getDateTime()}{CIRCLE_RED_R}{RESET}"
     # set the status
     setStatus(sStatusString)
