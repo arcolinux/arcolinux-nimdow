@@ -27,7 +27,7 @@ run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 picom -b  --config ~/.config/nimdow/picom.conf &
 run "numlockx on"
 run "volumeicon"
-run slstatus &
+#run slstatus &
 sxhkd -c ~/.config/nimdow/sxhkd/sxhkdrc &
 #run "nitrogen --restore"
 run "conky -c $HOME/.config/nimdow/system-overview"
