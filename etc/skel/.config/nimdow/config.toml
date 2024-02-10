@@ -29,10 +29,10 @@
 #keys = [ "p" ]
 #modifiers = [ "super" ]
 
-#[[startProcess]]
-#command = "alacritty"
-#keys = [ "Return" ]
-#modifiers = [ "super" ]
+[[startProcess]]
+command = "archlinux-logout"
+keys = [ "x" ]
+modifiers = [ "super" ]
 
 # Example: Start process when region is clicked, see github wiki for what constitutes a region
 # [[startProcess]]
@@ -122,10 +122,6 @@ exec = [
 
   [controls.destroySelectedWindow]
   keys = [ "q" ]
-  modifiers = [ "super", "shift" ]
-
-  [controls.destroySelectedWindow]
-  keys = [ "q" ]
   modifiers = [ "super" ]
 
   [controls.goToPreviousTag]
@@ -156,9 +152,9 @@ exec = [
   keys = [ "z" ]
   modifiers = [ "super" ]
 
-  #[controls.decreaseMasterCount]
-  #keys = [ "x" ]
-  #modifiers = [ "super" ]
+  [controls.decreaseMasterCount]
+  keys = [ "x" ]
+  modifiers = [ "super" ]
 
   [controls.toggleFloating]
   keys = [ "space" ]
