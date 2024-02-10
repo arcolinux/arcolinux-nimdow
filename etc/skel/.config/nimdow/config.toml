@@ -34,6 +34,11 @@ command = "archlinux-logout"
 keys = [ "x" ]
 modifiers = [ "super" ]
 
+[[startProcess]]
+command = "arcolinux-powermenu"
+keys = [ "x" ]
+modifiers = [ "super", "shift" ]
+
 # Example: Start process when region is clicked, see github wiki for what constitutes a region
 # [[startProcess]]
 # command = "notify-send \"Id: %1, rx: %2, cx: %4, w: %6\""
@@ -123,6 +128,10 @@ exec = [
   [controls.destroySelectedWindow]
   keys = [ "q" ]
   modifiers = [ "super" ]
+
+  [controls.destroySelectedWindow]
+  keys = [ "q" ]
+  modifiers = [ "super", "shift" ]
 
   [controls.goToPreviousTag]
   keys = [ "w" ]
