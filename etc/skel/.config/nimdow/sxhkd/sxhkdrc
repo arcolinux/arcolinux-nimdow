@@ -82,17 +82,17 @@ super + x
 super + r
     rofi-theme-selector
 
-#Urxvt
-#super + t
-#    urxvt
+#Alacritty
+super + t
+    alacritty
 
 #Pavucontrol
 super + v
     pavucontrol
 
-#Pragha
-#super + m
-#    pragha
+#Audio player
+super + m
+    lollypop
 
 #alacritty
 super + Return
@@ -128,7 +128,7 @@ super + shift + d
 super + d
     ~/.config/nimdow/launcher/launcher.sh
 
-#reload sxhkd:
+#reload sxhkd
 super + shift + s
 	pkill -USR1 -x sxhkd
 
@@ -201,9 +201,9 @@ ctrl + alt + r
 ctrl + alt + s
    spotify
 
-#st
+#alacritty
 ctrl + alt + Return
-    st
+    alacritty
 
 #alacritty
 ctrl + alt + t
@@ -318,9 +318,10 @@ ctrl + Print
 ctrl + shift + Print
      gnome-screenshot -i
 
-#flameshot
-ctrl + super + Print
-     flameshot gui
+#Flameshot
+super + ctrl + Print
+    flameshot gui
+
 
 #################################################################
 #     FUNCTION KEYS
