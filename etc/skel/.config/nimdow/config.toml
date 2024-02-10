@@ -38,7 +38,6 @@ modifiers = [ "super", "shift" ]
 exec = [
   "xsetroot -cursor_name left_ptr",
   "~/.config/nimdow/autostart.sh",
-  "~/.config/nimdow/nimdowstatus/NimdowStatus",
 ]
 
 [settings]
