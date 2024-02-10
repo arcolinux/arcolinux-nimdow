@@ -78,6 +78,10 @@ super + c
 super + x
     archlinux-logout
 
+#close window
+super + q
+    nimdow --destroy-selected-window
+
 #Rofi theme selector
 super + r
     rofi-theme-selector
