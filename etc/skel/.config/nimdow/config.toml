@@ -60,19 +60,19 @@ exec = [
   borderColorFocused = "#ff79c6"
   borderColorUrgent = "#ff5555"
   # Bar settings
-  barHeight = 28
+  barHeight = 22
   windowTitlePosition = "center"
   barBackgroundColor = "#282a36"
   barForegroundColor = "#44475a"
   barSelectionColor = "#f1fa8c"
   barUrgentColor = "#ff5555"
   barFonts = [
-    "Noto:style=Bold:size=12:antialias=true",
-    "JetBrainsMono Nerd Font Mono:size=20:antialias=true",
+    "Noto:style=Bold:size=11:antialias=true",
+    "JetBrainsMono Nerd Font Mono:size=19:antialias=true",
   ]
   # Layout settings
-  gapSize = 12
-  outerGap = 0
+  gapSize = 10
+  outerGap = 10
   resizeStep = 10
   # Scratchpad settings
   scratchpadWidth = 500
