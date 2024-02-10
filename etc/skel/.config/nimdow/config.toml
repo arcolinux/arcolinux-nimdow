@@ -15,16 +15,6 @@
 #modifiers = [ "control", "alt" ]
 
 #[[startProcess]]
-#command = "$BROWSER"
-#keys = [ "i" ]
-#modifiers = [ "super" ]
-
-#[[startProcess]]
-#command = "dmenu_run"
-#keys = [ "p" ]
-#modifiers = [ "control", "super" ]
-
-#[[startProcess]]
 #command = "rofi -show drun"
 #keys = [ "p" ]
 #modifiers = [ "super" ]
@@ -78,8 +68,7 @@ exec = [
   barSelectionColor = "#f1fa8c"
   barUrgentColor = "#ff5555"
   barFonts = [
-    "Inconsolata:style=Bold:size=14:antialias=true",
-    "FontAwesome:size=14:antialias=true",
+    "Noto:style=Bold:size=12:antialias=true",
     "JetBrainsMono Nerd Font Mono:size=20:antialias=true",
   ]
   # Layout settings
