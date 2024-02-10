@@ -124,6 +124,10 @@ exec = [
   keys = [ "q" ]
   modifiers = [ "super", "shift" ]
 
+  [controls.destroySelectedWindow]
+  keys = [ "q" ]
+  modifiers = [ "super" ]
+
   [controls.goToPreviousTag]
   keys = [ "w" ]
   modifiers = [ "super" ]
@@ -152,9 +156,9 @@ exec = [
   keys = [ "z" ]
   modifiers = [ "super" ]
 
-  [controls.decreaseMasterCount]
-  keys = [ "x" ]
-  modifiers = [ "super" ]
+  #[controls.decreaseMasterCount]
+  #keys = [ "x" ]
+  #modifiers = [ "super" ]
 
   [controls.toggleFloating]
   keys = [ "space" ]
