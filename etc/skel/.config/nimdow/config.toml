@@ -113,9 +113,9 @@ exec = [
   keys = [ "f" ]
   modifiers = [ "super" ]
 
-  [controls.destroySelectedWindow]
-  keys = [ "q" ]
-  modifiers = [ "super" ]
+  #[controls.destroySelectedWindow]
+  #keys = [ "q" ]
+  #modifiers = [ "super" ]
 
   [controls.destroySelectedWindow]
   keys = [ "q" ]
