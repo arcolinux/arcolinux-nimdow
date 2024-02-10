@@ -200,13 +200,13 @@ exec = [
   keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
   modifiers = [ "super", "shift", "control" ]
 
-	[controls.increaseMasterWidth]
-	keys = [ "l" ]
-	modifiers = [ "super" ]
+  [controls.increaseMasterWidth]
+  keys = [ "l" ]
+  modifiers = [ "super" ]
 
-	[controls.decreaseMasterWidth]
-	keys = [ "h" ]
-	modifiers = [ "super" ]
+  [controls.decreaseMasterWidth]
+  keys = [ "h" ]
+  modifiers = [ "super" ]
 
   [controls.moveWindowToScratchpad]
   keys = [ "s" ]
