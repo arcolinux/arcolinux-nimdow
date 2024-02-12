@@ -401,6 +401,5 @@ XF86MonBrightnessDown
 ctrl + alt + o
     ~/.config/nimdow/scripts/picom-toggle.sh
 
-#btop
 ctrl + alt + End
-    btop
+    dex --term alacritty /usr/share/applications/btop.desktop
