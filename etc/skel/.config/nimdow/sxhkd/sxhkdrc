@@ -297,6 +297,10 @@ alt + shift + f
 alt + shift + u
     wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
 
+#Wallpaper update
+alt + shift + up
+    wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
 #################################################################
 # CONTROL + SHIFT KEYS
 #################################################################
