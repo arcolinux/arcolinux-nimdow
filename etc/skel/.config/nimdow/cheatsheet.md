@@ -33,10 +33,10 @@
   Super  Shift  1 .. 0    *move container to workspace 1 .. 10*
 
 # notes
-  - Follow the website - https://dwm.suckless.org
+  - Follow the website - https://github.com/avahe-kellenberger/nimdow
 
 # user githubs
-  - ...
+  - https://github.com/DrunkenAlcoholic
 
 # share your own files on github 
   - so we can all learn
