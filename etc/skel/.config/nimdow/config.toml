@@ -41,19 +41,6 @@ exec = [
 ]
 
 [settings]
-  # Window settings - gruvboxish type theme
-  #borderWidth = 1
-  #borderColorUnfocused = "#282a36"
-  #borderColorFocused = "#8ec07c"
-  #borderColorUrgent = "#cc241d"
-  # Bar settings
-  #barHeight = 28
-  #windowTitlePosition = "center"
-  #barBackgroundColor = "#918273" #"#282a36"
-  #barForegroundColor = "#313338" #"#f8f8f2"
-  #barSelectionColor = "ebdbb2"#"#f9bc2f" #"#50fa7b"
-  #barUrgentColor = "#cc241d"
-  
   # Window settings - Dracula type theme
   borderWidth = 1
   borderColorUnfocused = "#6272a4"
