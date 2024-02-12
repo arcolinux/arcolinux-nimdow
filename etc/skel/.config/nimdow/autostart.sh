@@ -30,7 +30,7 @@ sxhkd -c ~/.config/nimdow/sxhkd/sxhkdrc &
 conky -c $HOME/.config/nimdow/system-overview &
 #you can set wallpapers in themes as well
 # feh --bg-fill /usr/share/backgrounds/archlinux/arch-wallpaper.jpg &
-# feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
+feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 
 # applications from startup
 
