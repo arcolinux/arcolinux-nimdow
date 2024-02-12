@@ -306,6 +306,7 @@ ctrl + shift + Escape
     xfce4-taskmanager
 
 
+
 #################################################################
 #     SCREENSHOTS
 #################################################################
@@ -399,3 +400,7 @@ XF86MonBrightnessDown
 #Picom Toggle
 ctrl + alt + o
     ~/.config/nimdow/scripts/picom-toggle.sh
+
+#btop
+ctrl + alt + End
+    btop

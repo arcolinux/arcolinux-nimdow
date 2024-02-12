@@ -66,10 +66,7 @@ exec = [
   barForegroundColor = "#44475a"
   barSelectionColor = "#f1fa8c"
   barUrgentColor = "#ff5555"
-  barFonts = [
-    "Noto:style=Bold:size=11:antialias=true",
-    "JetBrainsMono Nerd Font Mono:size=19:antialias=true",
-  ]
+  barFonts = ["Noto:style=Bold:size=11:antialias=true", "JetBrainsMono Nerd Font Mono:size=19:antialias=true"]
   # Layout settings
   gapSize = 10
   outerGap = 10
