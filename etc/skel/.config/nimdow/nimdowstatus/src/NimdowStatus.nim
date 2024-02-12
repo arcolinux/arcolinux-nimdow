@@ -1,4 +1,4 @@
-import std/[os, times, strutils, httpclient, options, strformat]
+import std/[os, osproc, times, strutils, httpclient, options, strformat]
 # import parsetoml  <--- WiP to move all the below settings to a toml file
 
 #++++++++++++++++++++++++++++++++++++++++++#
@@ -29,6 +29,10 @@ const
   TIME_ICON = "  "
   ## memory icon to display
   MEMORY_ICON = "  "
+  ## Volume icon to display
+  VOL_ICON = " 󰕾 "
+  ## Mute icon to display
+  MUTE_ICON = " 󰖁 "
 
 #++++++++++++++++++++++++++++++++++++++++++#
 #                  THEME                   #
@@ -49,6 +53,8 @@ include functions/getBatStatus
 include functions/getMemory
 # include weather function {getWeather()}
 include functions/getWeather
+# include Alsa volume levels function {getAlsa}
+include functions/getAlsa
 
 
 # Function to set the string
@@ -58,8 +64,10 @@ proc setStatus(sStatus: string) =
 # Main loop
 proc main() =
   while true:
-    # create the string using themed arrows and functions
-    let sStatusString = fmt"{ARROW_CYAN}{ARROW_ORANGE}{getWeather()}{ARROW_PINK}{getBatStatus()}{ARROW_PURPLE}{getMemory()}{ARROW_RED}{getDateTime()}{RESET}"
+    #+++++++++++++++++++++++++++
+    #  CREATE STATUS STRING    #
+    #+++++++++++++++++++++++++++
+    let sStatusString = fmt"{ARROW_CYAN}{ARROW_ORANGE}{getWeather()}{ARROW_PINK}{getMemory()}{ARROW_PURPLE}{getAlsa()}{ARROW_RED}{getDateTime()}{RESET}"
     #let sStatusString = fmt"{CIRCLE_GREEN_L}{getWeather()}{CIRCLE_GREEN_R}{CIRCLE_ORANGE_L}{getBatStatus()}{CIRCLE_ORANGE_R}{CIRCLE_BLUE_L}{getMemory()}{CIRCLE_BLUE_R}{CIRCLE_RED_L}{getDateTime()}{CIRCLE_RED_R}{RESET}"
     # set the status
     setStatus(sStatusString)
