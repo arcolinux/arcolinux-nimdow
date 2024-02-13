@@ -1,31 +1,151 @@
-#!/usr/bin/env bash
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Author    : Erik Dubois
+# Website   : https://www.erikdubois.be
+# Website   : https://www.alci.online
+# Website   : https://www.ariser.eu
+# Website   : https://www.arcolinux.info
+# Website   : https://www.arcolinux.com
+# Website   : https://www.arcolinuxd.com
+# Website   : https://www.arcolinuxb.com
+# Website   : https://www.arcolinuxiso.com
+# Website   : https://www.arcolinuxforum.com
+##################################################################################################################
+#
+#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#
+##################################################################################################################
+#tput setaf 0 = black
+#tput setaf 1 = red
+#tput setaf 2 = green
+#tput setaf 3 = yellow
+#tput setaf 4 = dark blue
+#tput setaf 5 = purple
+#tput setaf 6 = cyan
+#tput setaf 7 = gray
+#tput setaf 8 = light blue
+##################################################################################################################
 
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
-## Set GTK Themes, Icons, Cursor and Fonts
+##################################################################################################################
 
-# you can set your icons, themes and cursor via
-# dconf editor
+THEME='Arc-Dark'
+ICONS='a-candy-beauty-icon-theme'
+FONT='Noto Sans 11'
+CURSOR='Bibata-Modern-Ice'
 
-# cursor is also in wayfire.ini
+SCHEMA='gsettings set org.gnome.desktop.interface'
 
-# /org/gnome/desktop/interface
+##################################################################################################################
 
-# or run these commands
+# /home/erik/.config/dconf/user
+apply_dconf() {
+	if [ -f $HOME/.config/dconf/user ]; then
 
-# https://github.com/WayfireWM/wayfire/wiki/Tips-&-Tricks#gtk-theme-not-working
+		echo
+		tput setaf 3
+		echo "################################################################"
+		echo "################### Applying dconf settings"
+		echo "################################################################"
+		tput sgr0
+		echo
 
-# usage: import-gsettings
-config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
-if [ ! -f "$config" ]; then exit 1; fi
+		${SCHEMA} gtk-theme "$THEME"
+		${SCHEMA} icon-theme "$ICONS"
+		${SCHEMA} cursor-theme "$CURSOR"
+		${SCHEMA} font-name "$FONT"
+	fi
+}
 
-gnome_schema="org.gnome.desktop.interface"
-gtk_theme="$(grep 'gtk-theme-name' "$config" | sed 's/.*\s*=\s*//')"
-icon_theme="$(grep 'gtk-icon-theme-name' "$config" | sed 's/.*\s*=\s*//')"
-cursor_theme="$(grep 'gtk-cursor-theme-name' "$config" | sed 's/.*\s*=\s*//')"
-font_name="$(grep 'gtk-font-name' "$config" | sed 's/.*\s*=\s*//')"
-gsettings set "$gnome_schema" gtk-theme "$gtk_theme"
-gsettings set "$gnome_schema" icon-theme "$icon_theme"
-gsettings set "$gnome_schema" cursor-theme "$cursor_theme"
-gsettings set "$gnome_schema" font-name "$font_name"
+# /home/erik/.config/gtk-3.0/settings.ini
+apply_gtk3() {
+	if [ -f $HOME/.config/gtk-3.0/settings.ini ]; then
+
+		echo
+		tput setaf 3
+		echo "################################################################"
+		echo "################### Applying gtk-3.0 settings"
+		echo "################################################################"
+		tput sgr0
+		echo
+
+		sed -i "s/gtk-theme-name=.*/gtk-theme-name=$THEME/g" \
+		$HOME/.config/gtk-3.0/settings.ini
+		sed -i "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=$ICONS/g" \
+		$HOME/.config/gtk-3.0/settings.ini
+		sed -i "s/gtk-cursor-theme-name.*/gtk-cursor-theme-name=$CURSOR/g" \
+		$HOME/.config/gtk-3.0/settings.ini	
+		sed -i "s/gtk-font-name=.*/gtk-font-name=$FONT/g" \
+		$HOME/.config/gtk-3.0/settings.ini
+	fi
+}
+
+# /home/erik/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+apply_xfce() {
+	if [ -f $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml ]; then
+
+		echo
+		tput setaf 3
+		echo "################################################################"
+		echo "################### Applying xfce4 settings"
+		echo "################################################################"
+		tput sgr0
+		echo
+
+		sed -i "s/<property name=\"CursorThemeName\" type=\"string\" value=\".*/<property name=\"CursorThemeName\" type=\"string\" value=\"$CURSOR\"\/>/g" \
+		$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+		sed -i "s/<property name=\"IconThemeName\" type=\"string\" value=\".*/<property name=\"IconThemeName\" type=\"string\" value=\"$ICONS\"\/>/g" \
+		$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+		sed -i "s/<property name=\"ThemeName\" type=\"string\" value=\".*/<property name=\"ThemeName\" type=\"string\" value=\"$THEME\"\/>/g" \
+		$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml	
+		sed -i "s/<property name=\"FontName\" type=\"string\" value=\".*/<property name=\"FontName\" type=\"string\" value=\"$FONT\"\/>/g" \
+		$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+	fi
+}
+
+# /home/erik/.gtkrc-2.0
+apply_gtkrc() {
+	if [ -f $HOME/.gtkrc-2.0 ]; then
+
+		echo
+		tput setaf 3
+		echo "################################################################"
+		echo "################### Applying gtkrc-2.0 settings"
+		echo "################################################################"
+		tput sgr0
+		echo
+
+		sed -i "s/gtk-theme-name=\".*/gtk-theme-name=\"$THEME\"/g" \
+		$HOME/.gtkrc-2.0
+		sed -i "s/gtk-icon-theme-name=\".*/gtk-icon-theme-name=\"$ICONS\"/g" \
+		$HOME/.gtkrc-2.0
+		sed -i "s/gtk-cursor-theme-name=\".*/gtk-cursor-theme-name=\"$CURSOR\"/g" \
+		$HOME/.gtkrc-2.0
+		sed -i "s/gtk-font-name=\".*/gtk-font-name=\"$FONT\"/g" \
+		$HOME/.gtkrc-2.0
+	fi
+}
+
+# /usr/share/icons/default/index.theme
+apply_index() {
+	if [ -f /usr/share/icons/default/index.theme ]; then
+
+		echo
+		tput setaf 3
+		echo "################################################################"
+		echo "################### Applying index.theme settings"
+		echo "################################################################"
+		tput sgr0
+		echo
+
+		sudo sed -i "s/Inherits=.*/Inherits=$CURSOR/g" /usr/share/icons/default/index.theme
+	fi
+}
+
+apply_dconf
+apply_gtk3
+apply_xfce
+apply_gtkrc
+apply_index
