@@ -82,6 +82,10 @@ super + x
 super + q
     nimdow --destroy-selected-window
 
+#close window
+super + shift + q
+    nimdow --destroy-selected-window
+
 #Rofi theme selector
 super + r
     rofi-theme-selector

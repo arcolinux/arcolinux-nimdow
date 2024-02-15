@@ -14,11 +14,6 @@
 #keys = [ "Delete" ]
 #modifiers = [ "control", "alt" ]
 
-#[[startProcess]]
-#command = "rofi -show drun"
-#keys = [ "p" ]
-#modifiers = [ "super" ]
-
 [[startProcess]]
 command = "archlinux-logout"
 keys = [ "x" ]
@@ -96,14 +91,6 @@ exec = [
   [controls.toggleFullscreen]
   keys = [ "f" ]
   modifiers = [ "super" ]
-
-  #[controls.destroySelectedWindow]
-  #keys = [ "q" ]
-  #modifiers = [ "super" ]
-
-  [controls.destroySelectedWindow]
-  keys = [ "q" ]
-  modifiers = [ "super", "shift" ]
 
   [controls.goToPreviousTag]
   keys = [ "w" ]
