@@ -67,8 +67,22 @@ proc main() =
     #+++++++++++++++++++++++++++
     #  CREATE STATUS STRING    #
     #+++++++++++++++++++++++++++
+    # without battery
+    # with arrows
     let sStatusString = fmt"{ARROW_CYAN}{ARROW_ORANGE}{getWeather()}{ARROW_PINK}{getMemory()}{ARROW_PURPLE}{getAlsa()}{ARROW_RED}{getDateTime()}{RESET}"
+
+    # with battery
+    # with arrows
+    #let sStatusString = fmt"{ARROW_CYAN}{ARROW_GREEN}{getWeather()}{ARROW_ORANGE}{getBatStatus()}{ARROW_PINK}{getMemory()}{ARROW_PURPLE}{getAlsa()}{ARROW_RED}{getDateTime()}{RESET}"
+
+    # with rounded corner
+    # without battery    
+    #let sStatusString = fmt"{CIRCLE_GREEN_L}{getWeather()}{CIRCLE_GREEN_R}{CIRCLE_BLUE_L}{getMemory()}{CIRCLE_BLUE_R}{CIRCLE_RED_L}{getDateTime()}{CIRCLE_RED_R}{RESET}"
+    
+    # with rounded corner
+    # with battery    
     #let sStatusString = fmt"{CIRCLE_GREEN_L}{getWeather()}{CIRCLE_GREEN_R}{CIRCLE_ORANGE_L}{getBatStatus()}{CIRCLE_ORANGE_R}{CIRCLE_BLUE_L}{getMemory()}{CIRCLE_BLUE_R}{CIRCLE_RED_L}{getDateTime()}{CIRCLE_RED_R}{RESET}"
+    
     # set the status
     setStatus(sStatusString)
     # sleep for n seconds
