@@ -45,8 +45,8 @@ const
 #++++++++++++++++++++++++++++++++++++++++++#
 # include themed arrows gruvbox or dracula, more to come
 #include themes/gruvbox_arrows
-#include themes/dracula_arrows
-include themes/nord_arrows
+include themes/dracula_arrows
+#include themes/nord_arrows
 
 
 #++++++++++++++++++++++++++++++++++++++++++#
