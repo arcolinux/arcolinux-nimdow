@@ -54,8 +54,8 @@ exec = [
   outerGap = 10
   resizeStep = 10
   # Scratchpad settings
-  scratchpadWidth = 500
-  scratchpadHeight = 300
+  #scratchpadWidth = 500
+  #scratchpadHeight = 300
   # General settings
   loggingEnabled = false
   reverseTagScrolling = false
@@ -172,13 +172,13 @@ exec = [
 	keys = [ "h" ]
 	modifiers = [ "super" ]
 
-  [controls.moveWindowToScratchpad]
-  keys = [ "s" ]
-  modifiers = [ "super", "shift" ]
+  #[controls.moveWindowToScratchpad]
+  #keys = [ "s" ]
+  #modifiers = [ "super", "shift" ]
 
-  [controls.popScratchpad]
-  keys = [ "s" ]
-  modifiers = [ "super" ]
+  #[controls.popScratchpad]
+  #keys = [ "s" ]
+  #modifiers = [ "super" ]
 
   [controls.rotateClients]
   keys = [ "r" ]
