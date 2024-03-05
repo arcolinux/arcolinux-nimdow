@@ -29,6 +29,22 @@ modifiers = [ "super", "shift" ]
 # command = "notify-send \"Id: %1, rx: %2, cx: %4, w: %6\""
 # clickRegion = 0
 
+[[startProcess]]
+command = "alacritty -e sudo pacman -Syu"
+clickRegion = 1
+
+[[startProcess]]
+command = "alacritty -e btop"
+clickRegion = 3
+
+[[startProcess]]
+command = "pavucontrol"
+clickRegion = 4
+
+[[startProcess]]
+command = "/usr/bin/xfce4-keyboard-settings"
+clickRegion = 5
+
 [autostart]
 exec = [
   "xsetroot -cursor_name left_ptr",
@@ -48,7 +64,9 @@ exec = [
   barForegroundColor = "#44475a"
   barSelectionColor = "#f1fa8c"
   barUrgentColor = "#ff5555"
-  barFonts = ["Noto:style=Bold:size=11:antialias=true", "JetBrainsMono Nerd Font Mono:size=19:antialias=true"]
+  barFonts = [
+    "Noto:style=Bold:size=11:antialias=true",
+    "JetBrainsMono Nerd Font Mono:size=19:antialias=true"]
   # Layout settings
   gapSize = 10
   outerGap = 10
@@ -191,6 +209,16 @@ exec = [
 # Example monitor settings:
  [monitors]
    [monitors.default.tags]
+  # 1.displayString = "󰲠"
+  # 2.displayString = "󰲢"
+  # 3.displayString = "󰲤"
+  # 4.displayString = "󰲦"
+  # 5.displayString = "󰲨"
+  # 6.displayString = "󰲪"
+  # 7.displayString = "󰲬"
+  # 8.displayString = "󰲮"
+  # 9.displayString = "󰲰"
+
    1.displayString = "󰎤"
    2.displayString = "󰎧"
    3.displayString = "󰎪"

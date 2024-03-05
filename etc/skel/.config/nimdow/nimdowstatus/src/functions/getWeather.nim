@@ -7,12 +7,12 @@ proc getWeather(): string =
     result = sWeather # Do something with the weather information
   else:
     dTimeStamp = some(now())
-    var hClient = newHttpClient()
+    var hClient = newHttpClient(timeout = 1000)
     try:
       sWeather = WEATHER_ICON & hClient.getContent("http://wttr.in/" & CITY & "?format=%t")
       result = sWeather
     except CatchableError as e:
-      echo "An error: " , e.repr
+      echo "An Error: ", e.repr
       sWeather = WEATHER_ICON & " N/A "
       result = sWeather
     finally:

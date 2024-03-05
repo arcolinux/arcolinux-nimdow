@@ -6,21 +6,25 @@ import std/[os, osproc, times, strutils, httpclient, options, strformat]
 #++++++++++++++++++++++++++++++++++++++++++#
 const
   ## main refresh intervals in seconds
-  UPDATE_INTERVAL = 40
-  ## not used yet, more themes to come, see below theme section
-  #THEME = "gruvbox_arrows"
-  ## select city for weather, uses wttr.in
-  CITY = "" #
+  UPDATE_INTERVAL = 10
   ## update weather in minutes
   UPDATE_WEATHER = 10
-  ## typically its either BAT0 or BAT1, not used yet, see getBatStatus.nim to change
-  #BAT = "BAT0"
+  ## update checkupdate(arch) intervals in minutes
+  UPDATE_UPDATES = 20
+  ## select city for weather, uses wttr.in
+  CITY = "Perth" #
   ## date formatting
   DATE_FORMAT = "ddd d MMM "
   ## time formatting
   TIME_FORMAT = "HH:mm "
   ## date and time formatting
   DATETIME_FORMAT = "ddd d MMM HH:mm "
+  ## Regions for clickable statusbar
+  REGION: string = "\x1F" # Do not edit, use Nimdows config.toml to set actions
+
+#++++++++++++++++++++++++++++++++++++++++++#
+#                ICONS                     #
+#++++++++++++++++++++++++++++++++++++++++++#  
   ## weather icon, be sure to include font in the nimdow config.toml
   WEATHER_ICON = "  "
   ## date icon to display
@@ -30,16 +34,24 @@ const
   ## memory icon to display
   MEMORY_ICON = "  "
   ## Volume icon to display
-  VOL_ICON = " 󰕾 "
+  VOL_ICON = "  "
   ## Mute icon to display
   MUTE_ICON = " 󰖁 "
-
+  ## Keyboard Icon to display
+  KB_ICON = "  "
+  ## Update Icon to display
+  UPDATE_ICON = "   Updates: "
+  ## Battery Icons to display (array)
+  BATTERY_ICON = @["  ", "  ", "  ", "  ", "  ", "  "]
+  
 #++++++++++++++++++++++++++++++++++++++++++#
 #                  THEME                   #
 #++++++++++++++++++++++++++++++++++++++++++#
-# include themed arrows gruvbox or dracula, more to come
-#include themes/gruvbox_arrows
-include themes/dracula_arrows
+# include themed arrows/circles/angle in gruvbox, dracula, nord and catpuccin
+#include themes/gruvbox
+include themes/dracula
+#include themes/nord
+#include themes/catpuccin
 
 
 #++++++++++++++++++++++++++++++++++++++++++#
@@ -53,13 +65,19 @@ include functions/getBatStatus
 include functions/getMemory
 # include weather function {getWeather()}
 include functions/getWeather
-# include Alsa volume levels function {getAlsa}
+# include Alsa volume levels function {getAlsa()}
 include functions/getAlsa
+# include keyboard layout function {getKeyboard()}
+include functions/getKeyboard
+# include updates from arch, function {getArchUpdates()}
+include functions/getArchUpdates
 
 
 # Function to set the string
 proc setStatus(sStatus: string) =
   discard execShellCmd("xsetroot -name " & "\"" & sStatus & "\"")
+  #Debug/test from the terminal
+  #echo sStatus
 
 # Main loop
 proc main() =
@@ -67,22 +85,37 @@ proc main() =
     #+++++++++++++++++++++++++++
     #  CREATE STATUS STRING    #
     #+++++++++++++++++++++++++++
-    # without battery
-    # with arrows
-    let sStatusString = fmt"{ARROW_CYAN}{ARROW_ORANGE}{getWeather()}{ARROW_PINK}{getMemory()}{ARROW_PURPLE}{getAlsa()}{ARROW_RED}{getDateTime()}{RESET}"
 
-    # with battery
-    # with arrows
-    #let sStatusString = fmt"{ARROW_CYAN}{ARROW_GREEN}{getWeather()}{ARROW_ORANGE}{getBatStatus()}{ARROW_PINK}{getMemory()}{ARROW_PURPLE}{getAlsa()}{ARROW_RED}{getDateTime()}{RESET}"
+    # PowerLine(Arrows) with Battery
+    #let sStatusString = fmt"{PLINE_4}{getArchUpdates()}{REGION}{PLINE_5}{getWeather()}{REGION}{PLINE_6}{getMemory()}{REGION}{PLINE_7}{getBatStatus()}{REGION}{PLINE_8}{getAlsa()}{REGION}{PLINE_9}{getKeyboard()}{REGION}{PLINE_10}{getDateTime()}{REGION}{RESET}"
+    # PowerLine(Arrows) without Battery
+    let sStatusString = fmt"{PLINE_4}{getArchUpdates()}{REGION}{PLINE_5}{getWeather()}{REGION}{PLINE_6}{getMemory()}{REGION}{PLINE_8}{getAlsa()}{REGION}{PLINE_9}{getKeyboard()}{REGION}{PLINE_10}{getDateTime()}{REGION}{RESET}"
 
-    # with rounded corner
-    # without battery    
-    #let sStatusString = fmt"{CIRCLE_GREEN_L}{getWeather()}{CIRCLE_GREEN_R}{CIRCLE_BLUE_L}{getMemory()}{CIRCLE_BLUE_R}{CIRCLE_RED_L}{getDateTime()}{CIRCLE_RED_R}{RESET}"
+    # PowerLine(Circles) with Battery
+    #let sStatusString = fmt"{CLINE_4}{getArchUpdates()}{REGION}{CLINE_5}{getWeather()}{REGION}{CLINE_6}{getMemory()}{REGION}{CLINE_7}{getBatStatus()}{REGION}{CLINE_8}{getAlsa()}{REGION}{CLINE_9}{getKeyboard()}{REGION}{CLINE_10}{getDateTime()}{REGION}{RESET}"
+    # PowerLine(Circles) without Battery
+    #let sStatusString = fmt"{CLINE_4}{getArchUpdates()}{REGION}{CLINE_5}{getWeather()}{REGION}{CLINE_6}{getMemory()}{REGION}{CLINE_8}{getAlsa()}{REGION}{CLINE_9}{getKeyboard()}{REGION}{CLINE_10}{getDateTime()}{REGION}{RESET}"
+
+    # PowerLine(Angles) with Battery
+    #let sStatusString = fmt"{ALINE_4}{getArchUpdates()}{REGION}{ALINE_5}{getWeather()}{REGION}{ALINE_6}{getMemory()}{REGION}{ALINE_7}{getBatStatus()}{REGION}{ALINE_8}{getAlsa()}{REGION}{ALINE_9}{getKeyboard()}{REGION}{ALINE_10}{getDateTime()}{REGION}{RESET}"
+    # PowerLine(Angles) without Battery
+    #let sStatusString = fmt"{ALINE_4}{getArchUpdates()}{REGION}{ALINE_5}{getWeather()}{REGION}{ALINE_6}{getMemory()}{REGION}{ALINE_8}{getAlsa()}{REGION}{ALINE_9}{getKeyboard()}{REGION}{ALINE_10}{getDateTime()}{REGION}{RESET}"
+
+    # ANGLES with Battery(uses =< _10 colours for Dracula theme)
+    #let sStatusString = fmt"{ANGLE_11L}{getArchUpdates()}{ANGLE_11R}{REGION}{ANGLE_13L}{getWeather()}{ANGLE_13R}{REGION}{ANGLE_7L}{getMemory()}{ANGLE_7R}{REGION}{ANGLE_15L}{getBatStatus()}{ANGLE_15R}{REGION}{ANGLE_14L}{getAlsa()}{ANGLE_14R}{REGION}{ANGLE_4L}{getKeyboard()}{ANGLE_4R}{REGION}{ANGLE_12L}{getDateTime()}{ANGLE_12R}{REGION}{RESET}"
+    # ANGLES without Battery(uses =< _10 colours for Dracula theme)
+    #let sStatusString = fmt"{ANGLE_11L}{getArchUpdates()}{ANGLE_11R}{REGION}{ANGLE_13L}{getWeather()}{ANGLE_13R}{REGION}{ANGLE_7L}{getMemory()}{ANGLE_7R}{REGION}{ANGLE_14L}{getAlsa()}{ANGLE_14R}{REGION}{ANGLE_4L}{getKeyboard()}{ANGLE_4R}{REGION}{ANGLE_12L}{getDateTime()}{ANGLE_12R}{REGION}{RESET}"
+
+    # ARROWS with Battery(uses =< _10 colours for Dracula theme)
+    #let sStatusString = fmt"{ARROW_11L}{getArchUpdates()}{ARROW_11R}{REGION}{ARROW_13L}{getWeather()}{ARROW_13R}{REGION}{ARROW_7L}{getMemory()}{ARROW_7R}{REGION}{ARROW_15L}{getBatStatus()}{ARROW_15R}{REGION}{ARROW_14L}{getAlsa()}{ARROW_14R}{REGION}{ARROW_4L}{getKeyboard()}{ARROW_4R}{REGION}{ARROW_12L}{getDateTime()}{ARROW_12R}{REGION}{RESET}"
+    # ARROWS without Battery(uses =< _10 colours for Dracula theme)
+    #let sStatusString = fmt"{ARROW_11L}{getArchUpdates()}{ARROW_11R}{REGION}{ARROW_13L}{getWeather()}{ARROW_13R}{REGION}{ARROW_7L}{getMemory()}{ARROW_7R}{REGION}{ARROW_14L}{getAlsa()}{ARROW_14R}{REGION}{ARROW_4L}{getKeyboard()}{ARROW_4R}{REGION}{ARROW_12L}{getDateTime()}{ARROW_12R}{REGION}{RESET}"
     
-    # with rounded corner
-    # with battery    
-    #let sStatusString = fmt"{CIRCLE_GREEN_L}{getWeather()}{CIRCLE_GREEN_R}{CIRCLE_ORANGE_L}{getBatStatus()}{CIRCLE_ORANGE_R}{CIRCLE_BLUE_L}{getMemory()}{CIRCLE_BLUE_R}{CIRCLE_RED_L}{getDateTime()}{CIRCLE_RED_R}{RESET}"
-    
+    # CIRCLES with Battery(uses =< _10 colours for Dracula theme)
+    #let sStatusString = fmt"{CIRCLE_11L}{getArchUpdates()}{CIRCLE_11R}{REGION}{CIRCLE_13L}{getWeather()}{CIRCLE_13R}{REGION}{CIRCLE_7L}{getMemory()}{CIRCLE_7R}{REGION}{CIRCLE_15L}{getBatStatus()}{CIRCLE_15R}{REGION}{CIRCLE_14L}{getAlsa()}{CIRCLE_14R}{REGION}{CIRCLE_4L}{getKeyboard()}{CIRCLE_4R}{REGION}{CIRCLE_12L}{getDateTime()}{CIRCLE_12R}{REGION}{RESET}"
+    # CIRCLES without Battery(uses =< _10 colours for Dracula theme)
+    #let sStatusString = fmt"{CIRCLE_11L}{getArchUpdates()}{CIRCLE_11R}{REGION}{CIRCLE_13L}{getWeather()}{CIRCLE_13R}{REGION}{CIRCLE_7L}{getMemory()}{CIRCLE_7R}{REGION}{CIRCLE_14L}{getAlsa()}{CIRCLE_14R}{REGION}{CIRCLE_4L}{getKeyboard()}{CIRCLE_4R}{REGION}{CIRCLE_12L}{getDateTime()}{CIRCLE_12R}{REGION}{RESET}"
+
     # set the status
     setStatus(sStatusString)
     # sleep for n seconds
