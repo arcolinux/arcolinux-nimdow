@@ -65,10 +65,10 @@ exec = [
   barSelectionColor = "#f1fa8c"
   barUrgentColor = "#ff5555"
   barFonts = [
-    "Noto:style=Bold:size=11:antialias=true",
+  "Noto:style=Bold:size=11:antialias=true",
+  "FontAwesome:size=14:antialias=true",
 	"JetBrainsMono Nerd Font:size=16:antialias=true",
-    "DejaVu Sans:style=Bold:size=10:antialias=true",
-	"FontAwesome:size=14:antialias=true",
+  "DejaVu Sans:style=Bold:size=10:antialias=true",
   ]
 
   # Layout settings
